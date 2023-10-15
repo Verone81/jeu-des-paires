@@ -1,0 +1,25 @@
+{
+  "name": "jeu-des-paires",
+  "version": "1.0.0",
+  "description": "jeu pour mon site internet",
+  "main": "sketch.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Verone81/jeu-des-paires.git"
+  },
+  "keywords": [
+    "jeu",
+    "mémoire",
+    "carte",
+    "vaiseau"
+  ],
+  "author": "Verone81",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Verone81/jeu-des-paires/issues"
+  },
+  "homepage": "https://github.com/Verone81/jeu-des-paires#readme"
+}

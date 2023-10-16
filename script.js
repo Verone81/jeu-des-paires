@@ -79,3 +79,17 @@ bouton.addEventListener("click", function() {
         }
     }, 1000);
 });
+
+canvas.addEventListener("click", function(event) {
+    let x = event.clientX - canvas.getBoundingClientRect().left;
+    let y = event.clientY - canvas.getBoundingClientRect().top;
+
+    let col = Math.floor(x / longeur);
+    let row = Math.floor(y / longeur);
+    
+    if (col >= 0 && col < 4 && row >= 0 && row < 4) {
+        let index = row * 4 + col;
+        ctx.drawImage(mes_images[index], col * longeur, row * longeur, longeur, longeur);
+        
+    }
+});

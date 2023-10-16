@@ -61,19 +61,21 @@ p{
 }
 #jouer{
     display: flex;
+    flex-direction: row;
+    justify-content: center;
+    background-color: rgb(243, 221, 180); 
+    width: 100%;
+    height: auto;
+    align-items: top;
     justify-content: center;
 }
 canvas{
+    background-color: blue;
+    width: 500px;
+    height: 500px;
     margin: 25px;
 }
 main{
-   background-color: rgb(243, 221, 180); 
-   width: 100%;
-   height: auto;
-   display: flex;
-   flex-direction: row-reverse;
-   align-items: top;
-   justify-content: center;
   
   
 }

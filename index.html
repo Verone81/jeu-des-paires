@@ -7,8 +7,6 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/p5.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/1.7.0/addons/p5.sound.min.js"></script>
     <title>Trouve les paire</title>
 </head>
 <body>
@@ -27,14 +25,12 @@
         </div>
 
         <div id ="jouer"> 
-            <main>
-
-                <button id="bouton-jouer" onclick="cacherIntro()">Commencer et cacher les carte</button>
-            </main>
+            <canvas id="myCanvas" width="500" height="500"></canvas>
+            <button id="bouton-jouer" onclick="cacherIntro()">Mélanger les carte et jouer !</button>
         </div>
         
 
     </div>
-    <script src="sketch.js"></script>
+    <script src="script.js"></script>
 </body>
 </html>

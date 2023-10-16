@@ -1,15 +1,9 @@
-var paragraphe = document.getElementById("paragraphe-intro");
-let longeur = 125;
-let x = 0;
-let y = 0;
+var canvas = document.getElementById("myCanvas");
+var ctx = canvas.getContext("2d");
 
-
-function cacherIntro() {
-    paragraphe.classList.add("cacher");
-}
-
+var bouton = document.getElementById("bouton-jouer");
 var mes_images = [];
-
+let longeur = 125;
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -17,10 +11,6 @@ function shuffleArray(array) {
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
-
-
-var canvas = document.getElementById("myCanvas");
-var ctx = canvas.getContext("2d");
 
 mes_images = [
     new Image(),
@@ -59,25 +49,33 @@ mes_images[14].src = "images/vaiseau_8_75.png";
 mes_images[15].src = "images/vaiseau_9_75.png";
 
 
-Promise.all(mes_images.map((image) => new Promise((resolve) => image.onload = resolve)))
-    .then(() => {
-        shuffleArray(mes_images);
+bouton.addEventListener("click", function() {
+    let x = 0;
+    let y = 0;
+    shuffleArray(mes_images);
 
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            ctx.strokeStyle = "rgb(249, 163, 44)"; 
+            ctx.strokeRect(i * longeur, j * longeur, longeur, longeur);
+            
+        }
+    }
+
+    for (let i = 0; i < mes_images.length; i++) {
+        ctx.drawImage(mes_images[i], x, y, 125, 125);
+        x += 125;
+        if (x >= 500) {
+            x = 0;
+            y += 125;
+        }
+    }
+    
+    setTimeout(function() {
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < 4; j++) {
-                ctx.strokeStyle = "rgb(249, 163, 44)";
-                ctx.beginPath();
-                ctx.rect(i * longeur, j * longeur, longeur, longeur);
-                ctx.stroke();
+                ctx.clearRect(i * 125, j * 125, 125 -1, 125 -1);
             }
         }
-
-        for (let i = 0; i < mes_images.length; i++) {
-            ctx.drawImage(mes_images[i], x, y, 125, 125);
-            x += 125;
-            if (x >= 500) {
-                x = 0;
-                y += 125;
-            }
-        }
-}  );
+    }, 1000);
+});

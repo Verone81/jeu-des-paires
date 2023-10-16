@@ -3,11 +3,13 @@ let longeur = 125;
 let x = 0;
 let y = 0;
 
+
 function cacherIntro() {
     paragraphe.classList.add("cacher");
 }
 
 var mes_images = [];
+
 
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
@@ -16,7 +18,7 @@ function shuffleArray(array) {
     }
 }
 
-// Récupérez le canvas
+
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
@@ -37,7 +39,6 @@ mes_images = [
     new Image(),
     new Image(),
     new Image(),
-    // Ajoutez d'autres images ici...
 ];
 
 mes_images[0].src = "images/vaiseau_2_75.png";
@@ -56,9 +57,8 @@ mes_images[12].src = "images/vaiseau_6_75.png";
 mes_images[13].src = "images/vaiseau_7_75.png";
 mes_images[14].src = "images/vaiseau_8_75.png";
 mes_images[15].src = "images/vaiseau_9_75.png";
-// Chargez d'autres images de la même manière...
 
-// Attendez que toutes les images soient chargées
+
 Promise.all(mes_images.map((image) => new Promise((resolve) => image.onload = resolve)))
     .then(() => {
         shuffleArray(mes_images);
@@ -80,4 +80,4 @@ Promise.all(mes_images.map((image) => new Promise((resolve) => image.onload = re
                 y += 125;
             }
         }
-    });
+}  );

@@ -1,18 +1,37 @@
 var canvas = document.getElementById("myCanvas");
 var ctx = canvas.getContext("2d");
 
-var bouton = document.getElementById("bouton-jouer");
-var mes_images = [];
-let longeur = 125;
+var canvas2 = document.getElementById("myCanvas2");
+var ctx2 = canvas2.getContext("2d");
 
+var temps_jeu = document.getElementsByClassName("temps-de-jeu");
+var bouton = document.getElementById("bouton-jouer");
+let temps_string;
+let longeur = 125;
+let col;
+let row;
+let display = 0;
+let col_2 = [];
+let row_2 = [];
+let image_pige = [];
+let game_over = 0;
+let temps = 0;
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
         [array[i], array[j]] = [array[j], array[i]];
     }
 }
+function temps_jeu(){
+    
+  
+    
+    ctx2.font = "48px serif";
+    ctx2.fillText("Bravo, tu a été rapide!", 20, 20);
 
-mes_images = [
+}
+
+var mes_images = [
     new Image(),
     new Image(),
     new Image(),
@@ -48,19 +67,39 @@ mes_images[13].src = "images/vaiseau_7_75.png";
 mes_images[14].src = "images/vaiseau_8_75.png";
 mes_images[15].src = "images/vaiseau_9_75.png";
 
+// dessin de la grille
+if (game_over != 16){
+    for (let i = 0; i < 4; i++) {
+        for (let j = 0; j < 4; j++) {
+            ctx.strokeStyle = "rgb(249, 163, 44)";
+            ctx.strokeRect(i * longeur, j * longeur, longeur, longeur);
 
-bouton.addEventListener("click", function() {
+        }
+    }
+}
+
+
+
+
+
+shuffleArray(mes_images);
+// quand on clique sur le bouton html ça mélange les carte et les fait voir une seconde
+bouton.addEventListener("click", function () {
     let x = 0;
     let y = 0;
     shuffleArray(mes_images);
-
-    for (let i = 0; i < 4; i++) {
-        for (let j = 0; j < 4; j++) {
-            ctx.strokeStyle = "rgb(249, 163, 44)"; 
-            ctx.strokeRect(i * longeur, j * longeur, longeur, longeur);
-            
-        }
-    }
+    setInterval(function () {
+        temps += 1;
+        temps_string = temps.toString();
+        ctx2.fillStyle = "orange";
+        ctx2.font = "48px arial";
+        ctx2.fillText(temps_string, 130, 100); 
+        setTimeout(function () {
+            ctx2.clearRect(0, 0, 200, 100);
+    
+        }, 995)
+    },1000);
+    
 
     for (let i = 0; i < mes_images.length; i++) {
         ctx.drawImage(mes_images[i], x, y, 125, 125);
@@ -70,26 +109,83 @@ bouton.addEventListener("click", function() {
             y += 125;
         }
     }
-    
-    setTimeout(function() {
+
+    setTimeout(function () {
         for (let i = 0; i < 4; i++) {
             for (let j = 0; j < 4; j++) {
-                ctx.clearRect(i * 125, j * 125, 125 -1, 125 -1);
+                ctx.clearRect(i * 125, j * 125, 125 - 1, 125 - 1);
             }
         }
     }, 1000);
 });
 
-canvas.addEventListener("click", function(event) {
+
+
+
+
+//quand on clique sur une image
+canvas.addEventListener("click", function (event) {
     let x = event.clientX - canvas.getBoundingClientRect().left;
     let y = event.clientY - canvas.getBoundingClientRect().top;
 
-    let col = Math.floor(x / longeur);
-    let row = Math.floor(y / longeur);
+    col = Math.floor(x / longeur);
+    row = Math.floor(y / longeur);
+
     
+    //on regarde quelle image a été cliquer
     if (col >= 0 && col < 4 && row >= 0 && row < 4) {
-        let index = row * 4 + col;
+        index = row * 4 + col;
         ctx.drawImage(mes_images[index], col * longeur, row * longeur, longeur, longeur);
+
+        console.log("image");
+        col_2.push(col);
+        row_2.push(row);
+        image_pige.push(mes_images[index]);
+        display += 1;
         
+            
+        
+        if (display == 2) {
+            
+            console.log("display2")
+            //si c'est la deuxieme carte on fait une comparaison
+            if (image_pige[0].isEqualNode(image_pige[1])) {
+                game_over += 2
+                console.log("imagecomparaison");
+                col_2.length = 0;
+                row_2.length = 0;
+                image_pige.length = 0;
+                display = 0;
+                if(game_over == 16){
+                    for (let i = 0; i < 4; i++) {
+                        for (let j = 0; j < 4; j++) {
+                            ctx.clearRect(i * 125, j * 125, 125, 125);
+                        }
+                    }
+                    ctx.font = "48px serif";
+                    ctx.fillText("Bravo, tu a été rapide!", 20, 200);
+                }
+            }
+
+            else {
+
+                setTimeout(function () {
+                ctx.clearRect(col_2[0] * 125, row_2[0] * 125, 125 - 1, 125 - 1);
+                ctx.clearRect(col_2[1] * 125, row_2[1] * 125, 125 - 1, 125 - 1);
+
+                console.log("else");
+                col_2.length = 0;
+                row_2.length = 0;
+                image_pige.length = 0;
+                display = 0;
+                },1000);
+            }
+
+        }
+
+
+
+
+
     }
 });

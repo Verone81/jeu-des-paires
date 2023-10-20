@@ -56,17 +56,33 @@ p{
 #jouer{
     display: flex;
     flex-direction: row;
-    justify-content: center;
     background-color: rgb(243, 221, 180); 
     width: 100%;
     height: auto;
-    align-items: top;
-    justify-content: center;
+    align-items: center;
+    justify-content: left;
+    
 }
 
-canvas{
+#autres{
+    display: flex;
+    flex-direction: column;
+    
+    height: auto;
+    align-items: center;
+    justify-content: right;
+}
+
+#myCanvas{
     background-color: blue;
     width: 500px;
     height: 500px;
     margin: 25px;
+}
+
+#myCanvas2{
+    background-color: darkblue;
+    width: 200px;
+    height: 50px;
+   
 }

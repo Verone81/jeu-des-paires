@@ -1,33 +1,38 @@
 <!DOCTYPE html>
 <html lang="fr">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="style.css">
-    <title>Trouve les paire</title>
-</head>
-<body>
-    <div id ="conteneur">
-        <div id="intro">
-            <h1>Trouve les paires, il y a 10 vaisseaux spatials différents.</h1>
-                <p id="paragraphe-intro">Plongez dans l'univers captivant de l'espace et de la technologie<br>
-                    en découvrant des paires d'images uniques représentant des <br>
-                    vaisseaux spatiaux en pixel art Mettez vos talents d'observation <br>
-                    à l'épreuve en retournant les cartes pour trouver les correspondances <br>
-                    cachées. Que vous soyez un amateur de jeux de mémoire ou un passionné<br> 
-                    de l'espace, ce jeu vous promet des heures de divertissement et de <br>
-                    défis stimulants. Alors, préparez-vous à explorer cet univers <br>
-                    pixelisé et à aiguiser vos compétences de mémorisation tout en <br>
-                    vous amusant !</p>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="style.css">
+        <title>Trouve les paire</title>
+    </head>
+    <body>
+        <div id ="conteneur">
+            <div id="intro">
+                <h1>Trouve les paires, il y a 10 vaisseaux spatials différents.</h1>
+                    <p id="paragraphe-intro">Plongez dans l'univers captivant de l'espace et de la technologie<br>
+                        en découvrant des paires d'images uniques représentant des <br>
+                        vaisseaux spatiaux en pixel art Mettez vos talents d'observation <br>
+                        à l'épreuve en retournant les cartes pour trouver les correspondances <br>
+                        cachées. Que vous soyez un amateur de jeux de mémoire ou un passionné<br> 
+                        de l'espace, ce jeu vous promet des heures de divertissement et de <br>
+                        défis stimulants. Alors, préparez-vous à explorer cet univers <br>
+                        pixelisé et à aiguiser vos compétences de mémorisation tout en <br>
+                        vous amusant !</p>
+            </div>
+            <div id ="jouer"> 
+                <canvas id="myCanvas" width="500" height="500"></canvas>
+                <div id="autres">
+                    <button id="bouton-jouer" onclick="cacherIntro()">Mélanger les carte et jouer !</button>
+                    <canvas id="myCanvas2"></canvas>
+                </div>
+            </div>
+            
+            
         </div>
-        <div id ="jouer"> 
-            <canvas id="myCanvas" width="500" height="500"></canvas>
-            <button id="bouton-jouer" onclick="cacherIntro()">Mélanger les carte et jouer !</button>
-        </div>
-    </div>
-    <script src="script.js"></script>
-</body>
+        <script src="script.js"></script>
+    </body>
 </html>
